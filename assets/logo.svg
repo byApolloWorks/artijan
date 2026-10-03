@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120">
+  <rect width="400" height="120" rx="12" fill="#1e1e2e"/>
+  <text font-family="'SFMono-Regular','Consolas','Liberation Mono','Menlo',monospace" font-size="14" font-weight="bold" xml:space="preserve">
+    <tspan x="18" y="22" fill="#89dceb">    _    ____ _____ ___    _   _    _   _</tspan>
+    <tspan x="18" y="42" fill="#89b4fa">   / \  |  _ \_   _|_ _|  | | / \  | \ | |</tspan>
+    <tspan x="18" y="62" fill="#cba6f7">  / _ \ | |_) || |  | |_  | |/ _ \ |  \| |</tspan>
+    <tspan x="18" y="82" fill="#f5c2e7"> / ___ \|  _ &lt; | |  | | |_| / ___ \| |\  |</tspan>
+    <tspan x="18" y="102" fill="#f38ba8">/_/   \_\_| \_\|_| |___\___/_/   \_\_| \_|</tspan>
+  </text>
+</svg>

@@ -1,0 +1,73 @@
+import React from 'react';
+import { Box, Text } from 'ink';
+import { useTheme } from '../shared/ThemeContext.js';
+
+interface ShortcutBarProps {
+  hasSelection: boolean;
+  hasFilter?: boolean;
+  detailScrollable?: boolean;
+}
+
+const BASE_SHORTCUTS = [
+  { key: '\u25B2\u25BC', desc: 'navigate' },
+  { key: '\u2423', desc: 'select' },
+  { key: 'a', desc: 'select all' },
+  { key: '\u21E5', desc: 'detail' },
+  { key: 's', desc: 'sort' },
+  { key: '/', desc: 'search' },
+  { key: 'f', desc: 'filter' },
+  { key: 'x', desc: 'group' },
+  { key: 't', desc: 'theme' },
+  { key: 'q', desc: 'quit' },
+];
+
+const DELETE_SHORTCUTS = [
+  { key: '\u25B2\u25BC', desc: 'navigate' },
+  { key: '\u2423', desc: 'select' },
+  { key: 'shift+\u25B2\u25BC', desc: 'range' },
+  { key: 'a', desc: 'select all' },
+  { key: 'd', desc: 'delete' },
+  { key: 'f', desc: 'filter' },
+  { key: 'x', desc: 'group' },
+  { key: 'esc', desc: 'clear' },
+  { key: 'q', desc: 'quit' },
+];
+
+const FILTER_SHORTCUTS = [
+  { key: '\u25B2\u25BC', desc: 'navigate' },
+  { key: '\u2423', desc: 'select' },
+  { key: 'a', desc: 'select all' },
+  { key: 's', desc: 'sort' },
+  { key: 'f', desc: 'filter' },
+  { key: 'x', desc: 'group' },
+  { key: '/', desc: 'edit filter' },
+  { key: 'esc', desc: 'clear filter' },
+  { key: 'q', desc: 'quit' },
+];
+
+export function ShortcutBar({ hasSelection, hasFilter = false, detailScrollable = false }: ShortcutBarProps): React.ReactElement {
+  const theme = useTheme();
+  let shortcuts: Array<{ key: string; desc: string }>;
+  if (hasSelection) {
+    shortcuts = DELETE_SHORTCUTS;
+  } else if (hasFilter) {
+    shortcuts = FILTER_SHORTCUTS;
+  } else {
+    shortcuts = BASE_SHORTCUTS;
+  }
+
+  if (detailScrollable) {
+    shortcuts = [...shortcuts, { key: '+-', desc: 'scroll' }];
+  }
+
+  return (
+    <Box gap={1} marginLeft={1}>
+      {shortcuts.map(({ key, desc }) => (
+        <Box key={key}>
+          <Text backgroundColor={theme.accent} color={theme.cursorFg} bold>{` ${key} `}</Text>
+          <Text color={theme.text}>{` ${desc}`}</Text>
+        </Box>
+      ))}
+    </Box>
+  );
+}

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.planning/
+.worktrees/
+docs/
+mockups/
+
+# Release files
+.releaserc.json.bak
